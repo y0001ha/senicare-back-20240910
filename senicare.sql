@@ -126,3 +126,7 @@ COMMENT = '관리 기록 테이블';
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+CREATE USER 'senicare'@'%' IDENTIFIED BY 'P!ssw0rd';
+
+GRANT all privileges ON  senicare.* TO 'senicare'@'%';
