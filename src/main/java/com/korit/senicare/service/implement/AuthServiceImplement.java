@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.korit.senicare.common.util.AuthNumberCreator;
 import com.korit.senicare.dto.request.auth.IdCheckRequestDto;
+import com.korit.senicare.dto.request.auth.TelAuthCheckRequestDto;
 import com.korit.senicare.dto.request.auth.TelAuthRequestDto;
 import com.korit.senicare.dto.response.ResponseDto;
 import com.korit.senicare.entity.TelAuthNumberEntity;
@@ -77,8 +78,20 @@ public class AuthServiceImplement implements AuthService {
     }
 
     @Override
-    public ResponseEntity<ResponseDto> telAuthCheck(TelAuthRequestDto dto) {
+    public ResponseEntity<ResponseDto> telAuthCheck(TelAuthCheckRequestDto dto) {
         
+        String telNumber = dto.getTelNumber();
+        String authNumber = dto.getAuthNumber();
+
+        try {
+
+            boolean isMatched = telAuthNumberRepository.existsByTelNumberAndAuthNumber(telNumber, authNumber);
+            if (!isMatched) return ResponseDto.telAuthFail();
+
+        } catch(Exception exception) {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
 
         return ResponseDto.success();
     }
