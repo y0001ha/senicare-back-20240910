@@ -16,5 +16,6 @@ public interface AuthService {
     ResponseEntity<ResponseDto> telAuth(TelAuthRequestDto dto);
     ResponseEntity<ResponseDto> telAuthCheck(TelAuthCheckRequestDto dto);
     ResponseEntity<ResponseDto> signUp(SignUpRequestDto dto);
+    //와일드카드
     ResponseEntity<? super SignInResponseDto> signIn(SignInRequestDto dto);
 } 
