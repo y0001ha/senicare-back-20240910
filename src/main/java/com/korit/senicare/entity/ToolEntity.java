@@ -1,5 +1,7 @@
 package com.korit.senicare.entity;
 
+import com.korit.senicare.dto.request.tool.PostToolRequestDto;
+
 import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,4 +27,10 @@ public class ToolEntity {
     private String name;
     private String purpose;
     private Integer count;
+
+    public ToolEntity(PostToolRequestDto dto) {
+        this.name = dto.getName();
+        this.purpose = dto.getPurpose();
+        this.count = dto.getCount();
+    }
 }
