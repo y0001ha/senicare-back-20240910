@@ -12,5 +12,5 @@ public interface CareRecordRepository extends JpaRepository<CareRecordEntity, In
     
     //-@@@@@@@@
     @Transactional 
-    void deleteByCustomNumber(Integer customerNumber);
+    void deleteByCustomerNumber(Integer customerNumber);
 }
