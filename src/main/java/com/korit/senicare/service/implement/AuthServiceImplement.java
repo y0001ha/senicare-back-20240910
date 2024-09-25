@@ -43,7 +43,7 @@ public class AuthServiceImplement implements AuthService {
         try {
 
             boolean isExistedId = nurseRepository.existsByUserId(userId);
-            if (isExistedId) return ResponseDto.duplicatedUserID();
+            if (isExistedId) return ResponseDto.duplicatedUserId();
 
         } catch(Exception exception) {
             exception.printStackTrace();
@@ -117,7 +117,7 @@ public class AuthServiceImplement implements AuthService {
         try{
 
             boolean isExistedId = nurseRepository.existsByUserId(userId);
-            if (isExistedId) return ResponseDto.duplicatedUserID();
+            if (isExistedId) return ResponseDto.duplicatedUserId();
 
             boolean isExistedTelNumber = nurseRepository.existsByTelNumber(telNumber);
             if (isExistedTelNumber) return ResponseDto.duplicatedTelNumber();
@@ -157,7 +157,7 @@ public class AuthServiceImplement implements AuthService {
             if (!isMatched) return ResponseDto.signInFail();
 
             accessToken = jwtProvider.create(userId);
-            if (accessToken == null) return ResponseDto.tokenCreatFail();
+            if (accessToken == null) return ResponseDto.tokenCreateFail();
 
 
         } catch (Exception exception) {

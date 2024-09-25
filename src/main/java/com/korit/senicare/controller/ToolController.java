@@ -1,4 +1,4 @@
-package com.korit.senicare.contoller;
+package com.korit.senicare.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;

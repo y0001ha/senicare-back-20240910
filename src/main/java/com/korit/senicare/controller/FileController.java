@@ -1,4 +1,4 @@
-package com.korit.senicare.contoller;
+package com.korit.senicare.controller;
 
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
