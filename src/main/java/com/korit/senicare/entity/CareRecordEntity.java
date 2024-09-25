@@ -20,7 +20,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name="careRecords")
-@Table(name="careRecords")
+@Table(name="care_records")
 public class CareRecordEntity {
 
     @Id
@@ -40,10 +40,10 @@ public class CareRecordEntity {
         Integer customerNumber
     ) {
         Date now = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String recordDate = simpleDateFormat.format(now);
 
-        this.recordDate = "recordDate";
+        this.recordDate = recordDate;
         this.contents = dto.getContents();
         this.usedToolName = usedToolName;
         this.count = dto.getCount();

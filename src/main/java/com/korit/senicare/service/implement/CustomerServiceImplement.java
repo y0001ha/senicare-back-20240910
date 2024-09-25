@@ -154,14 +154,16 @@ public class CustomerServiceImplement implements CustomerService {
         try {
 
             String usedToolName = null;
-
+            ToolEntity toolEntity = null;
+            
             Integer usedToolNumber = dto.getUsedToolNumber();
+            Integer usedCount = dto.getCount();
+
             if (usedToolNumber != null) {
-                ToolEntity toolEntity = toolRepository.findByToolNumber(usedToolNumber);
+                toolEntity = toolRepository.findByToolNumber(usedToolNumber);
                 if (toolEntity == null) return ResponseDto.noExistTool();
                 
                 Integer count = toolEntity.getCount();
-                Integer usedCount = dto.getCount();
                 if (usedCount > count) return ResponseDto.toolInsufficient();
             
                 usedToolName = toolEntity.getName();
@@ -171,7 +173,8 @@ public class CustomerServiceImplement implements CustomerService {
             careRecordRepository.save(careRecordEntity);
 
             if (usedToolNumber != null) {
-                
+                toolEntity .decreaseCount(usedCount);
+                toolRepository.save(toolEntity);
             }
 
         } catch (Exception exception) {
